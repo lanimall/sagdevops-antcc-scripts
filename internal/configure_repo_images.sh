@@ -21,7 +21,6 @@ if [ -f ${HOME}/setenv-cce.sh ]; then
     . ${HOME}/setenv-cce.sh
 fi
 
-
 ### get the args
 for ARGS in "$@"
 do
