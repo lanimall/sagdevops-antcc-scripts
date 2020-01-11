@@ -8,7 +8,7 @@ BASEDIR="$THISDIR/../.."
 DEBUG=true
 
 SAGCCANT_TEMPLATE_PARAMS=""
-mandatory_args=("template.path" "template.props" "target.nodes" "repo.product" "repo.fix")
+mandatory_args=("template.path" "template.props" "target.nodes")
 optional_args=("environment.type=default" "fixes.apply=[]")
 script_arg_keys=()
 
