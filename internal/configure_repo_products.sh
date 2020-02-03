@@ -26,17 +26,31 @@ if [ -f ${HOME}/.setenv_cce_secrets.sh ]; then
     . ${HOME}/.setenv_cce_secrets.sh
 fi
 
-##Command in-line Params
-STATUS_ID=$1
+### get the args
+for ARGS in "$@"
+do
+    KEY=$(echo $ARGS | cut -f1 -d=)
+    VALUE=$(echo $ARGS | cut -f2 -d=)
+    case "$KEY" in
+            STATUS_ID)          STATUS_ID=${VALUE} ;;
+            repo_products_version_major)   repo_products_version_major=${VALUE} ;;
+            repo_products_version_minor)   repo_products_version_minor=${VALUE} ;;
+            *)   
+    esac
+done
+
+### optional params
 if [ "x$STATUS_ID" != "x" ]; then
     STATUS_ID="_$STATUS_ID"
 fi
 
 ##apply default command central license
-echo "Trying to setup product and fix repositories in Command Central"
+echo "Trying to setup product repositories in Command Central"
 $SAGCCANT_CMD   -Dbuild.dir=$ANT_BUILD_DIR \
                 -Denv.CC_TEMPLATE=sag-cc-repos/template-products.yaml  \
-                -Denv.CC_ENV=sag-cc-repos \
+                -Denv.CC_ENV=sag-cc-repos-products-empower \
+                -Drepo.products.version.major=$repo_products_version_major \
+                -Drepo.products.version.minor=$repo_products_version_minor \
                 setup
 
 runexec=$?

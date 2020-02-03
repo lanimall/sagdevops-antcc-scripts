@@ -43,6 +43,12 @@ fi
 #build the installer name
 CC_INSTALLER="cc-def-${CC_BOOTSTRAPPER_VERSION}-${CC_BOOTSTRAPPER_VERSION_FIX}-${CC_BOOTSTRAPPER_PLATFORM}"
 
+## if installer.url set to a local folder (ie. file://${user.home}/SAG_Bootstrap_Installer), then the scripts will try to find it at
+## ${installer.url}/${installer}.sh and save it to installer.dir... ie.
+CC_INSTALLER_URL="file://${user.home}/SAG_Bootstrap_Installer"
+CC_INSTALLER_DIR="${user.home}/Downloads"
+##These should all be passed by variables...
+
 ##### bootstrap: this leverages the properties file bootstrap/$CC_BOOT.properties + apply $CC_PASSWORD if defined in setenv_cce_init_secrets
 $ANT_CMD -Denv.CC_BOOT=$CC_BOOT \
     -Denv.CC_PASSWORD=$CC_PASSWORD \

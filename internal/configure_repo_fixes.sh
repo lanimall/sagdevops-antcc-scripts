@@ -36,7 +36,7 @@ fi
 echo "Trying to setup product and fix repositories in Command Central"
 $SAGCCANT_CMD   -Dbuild.dir=$ANT_BUILD_DIR \
                 -Denv.CC_TEMPLATE=sag-cc-repos/template-fixes.yaml  \
-                -Denv.CC_ENV=sag-cc-repos \
+                -Denv.CC_ENV=sag-cc-repos-fixes-empower \
                 setup
 
 runexec=$?
