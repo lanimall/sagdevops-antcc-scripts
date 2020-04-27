@@ -9,7 +9,7 @@ DEBUG=false
 
 SAGCCANT_TEMPLATE_PARAMS=""
 mandatory_args=("template.path" "template.props" "target.nodes")
-optional_args=("environment.type=default" "fixes.apply=[]")
+optional_args=("environment.type=default" "fixes.apply=[]" "products.fixes=[]")
 script_arg_keys=()
 
 ## apply global env
